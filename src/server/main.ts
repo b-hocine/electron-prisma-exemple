@@ -1,12 +1,16 @@
-import {appRouter} from "./router";
+// import {appRouter} from "./router";
 import {app, BrowserWindow, ipcMain, protocol} from 'electron';
 import path from "path";
-import {ipcRequestHandler} from "./ipcRequestHandler";
-import {IpcRequest} from "../api";
+// import {ipcRequestHandler} from "./ipcRequestHandler";
+// import {IpcRequest} from "../api";
 import fs from "fs";
 import {dbPath, dbUrl, latestMigration, Migration} from "./constants";
 import log from "electron-log";
 import {prisma, runPrismaCommand} from "./prisma";
+import { useUserHandler } from "./modules/user/user.handler";
+// import * as dotenv from "dotenv";
+
+// dotenv.config()
 
 const createWindow = async () => {
 
@@ -84,16 +88,18 @@ const createWindow = async () => {
 };
 
 app.whenReady().then(() => {
-  ipcMain.handle('trpc', (event, req: IpcRequest) => {
-    return ipcRequestHandler({
-      endpoint: "/trpc",
-      req,
-      router: appRouter,
-      createContext: async () => {
-        return {};
-      }
-    });
-  })
+  // ipcMain.handle('trpc', (event, req: IpcRequest) => {
+  //   return ipcRequestHandler({
+  //     endpoint: "/trpc",
+  //     req,
+  //     router: appRouter,
+  //     createContext: async () => {
+  //       return {};
+  //     }
+  //   });
+  // })
+
+  useUserHandler(ipcMain)  
 
   createWindow();
 

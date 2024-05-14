@@ -1,5 +1,8 @@
 import path from "path";
 import {app} from "electron";
+import * as dotenv from "dotenv";
+
+dotenv.config()//pour assurer le chargement des variables d'environnements
 
 export const isDev = process.env.NODE_ENV === "development";
 export const dbPath = path.join(app.getPath('userData'), "app.db");

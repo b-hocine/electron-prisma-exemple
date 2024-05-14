@@ -29,8 +29,6 @@
   "dependencies": {
     "@prisma/client": "^4.7.1",
     "@prisma/engines": "^4.7.1",
-    "@trpc/client": "^10.5.0",
-    "@trpc/server": "^10.5.0",
     "electron-log": "^4.4.8",
     "prisma": "^4.7.1",
     "superjson": "^1.12.1",

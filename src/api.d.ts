@@ -15,11 +15,11 @@ export interface IElectronAPI {
   node: () => string;
   chrome: () => string;
   electron: () => string;
-  trpc: (req: IpcRequest) => Promise<IpcResponse>;
 }
 
 declare global {
   interface Window {
     appApi: IElectronAPI;
+    ipcRenderer: import('electron').IpcRenderer;
   }
 }
